@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DA Lab Programs</title>
+
+  <style>
+    body { margin:0; background:#0d0d0d; font-family:Arial, sans-serif; color:#e5e5e5; }
+    header { padding:18px; text-align:center; font-size:24px; font-weight:600; background:#111; border-bottom:1px solid #333; color:#fff; }
+
+    .tabs { display:flex; background:#111; border-bottom:1px solid #333; }
+    .tab {
+      padding:14px 20px; cursor:pointer; font-weight:600;
+      border-right:1px solid #222; color:#ccc; background:#151515; transition:0.2s;
+    }
+    .tab:hover { background:#1f1f1f; color:#fff; }
+    .tab.active { background:#3b82f6; color:#fff; border-right:none; }
+
+    .content {
+      display:none; padding:20px; background:#141414;
+      margin:20px; border-radius:8px; border:1px solid #2a2a2a; color:#dcdcdc;
+    }
+    .content.active { display:block; }
+
+    .two-col {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .col-box {
+      background:#1a1a1a;
+      border:1px solid #333;
+      padding:16px;
+      border-radius:8px;
+      white-space:pre-wrap;
+      line-height:1.55;
+      font-size:14px;
+      color:#e0e0e0;
+    }
+    .col-title {
+      font-weight:600;
+      font-size:16px;
+      margin-bottom:10px;
+      color:#4dabff;
+    }
+
+    .code-box {
+      background:#000;
+      color:#00ffea;
+      padding:16px;
+      border-radius:6px;
+      overflow-x:auto;
+      margin-top:10px;
+      font-family:Consolas, monospace;
+      font-size:14px;
+      border:1px solid #333;
+      white-space:pre;
+    }
+.table-card {
+  background:#1a1a1a;
+  border:1px solid #333;
+  padding:16px;
+  border-radius:8px;
+  color:#e0e0e0;
+  position:relative;
+}
+
+.copy-btn {
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#3b82f6;
+  color:#fff;
+  padding:6px 10px;
+  border:none;
+  border-radius:4px;
+  font-size:12px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.copy-btn:hover { background:#60a5fa; }
+
+.table-title {
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:12px;
+  color:#4dabff;
+}
+
+.table-text {
+  white-space:pre-wrap;
+  font-size:13px;
+  line-height:1.45;
+  color:#dcdcdc;
+}
+
+.table-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+  </style>
+<script>
+function copyTable(id){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+</script>
+</head>
+
+<body>
+<header>DA Lab</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab(0)">8. Pivot Table</div>
+  <div class="tab" onclick="showTab(1)">9. Interactive Dashboard</div>
+  <div class="tab" onclick="showTab(2)">10. Python Prg</div>
+</div>
+
+<!-- LAB 8 -->
+<div class="content active">
+  <h2>8. Pivot Table</h2>
+
+  <div class="two-col">
+
+    <!-- LEFT RAW CLEANED TEXT -->
+    <div class="col-box">
+      <div class="col-title">Lab 8</div>
+
+Pivot Table, What-If Analysis, Data Validation, Subtotal with Range
+
+Pivot Tables  
+It's a powerful tool to calculate, summarize, and analyze data.  
+It lets you see comparisons, patterns, and trends in your data.
+
+Steps:  
+1. Enter the below data in Excel.
+2.Goto insert tab and click on pivot table then display the dialog box
+
+What-If Analysis  
+Technique to study different possible outcomes by changing values of variables.  
+Helps in decision-making.  
+-Sensitive Analysis:
+Focus on how to change in one variable affects variable.
+Example: Effect of change in interest rate on loan payment.
+
+How to use Goal Seek in Google Sheets  
+1. Open Google Sheets → Extensions → Add-ons → Get add-ons.  
+2.Goal Seek sidebar appears on left.
+3.Choose selected cell->target value for set cell.   
+4. Click Solve.  
+If it can’t find a solution, increase tolerance or time/iterations.
+
+Data Validation in Google Sheets  
+1. Go to Data → Data Validation and get a dialog box on the right side of the sheet
+2.Click "Add Rule"
+3. Select range.  
+4.Choose criteria and enter values.  
+5.Check Advanced Option if Show help text for a selected cell", if you want to leave a hint to an editor.  
+6.Chose one of two options against invalidate
+7.Click done.
+
+Subtotals with Ranges  
+You can automatically calculate subtotals and grand totals using the Subtotal command.
+
+Steps:  
+1. Sort data in decending order using sort option in data tab.Sort on region data. 
+2. Click on Subtotal option from data tab 
+3. At each change in → Region.  
+4. Function → Sum.  
+5. Add subtotal to → column.  
+6. Region-wise subtotals generated.
+    </div>
+
+    <!-- RIGHT SUMMARY -->
+    <div class="col-box">
+      <div class="col-title">Execution</div>
+
+<strong>Pivot Table</strong>
+1. Select the data range (Ctrl + A).  
+2. Insert → PivotTable → New Worksheet → OK.  
+3. Right Side: drag and drop feilds into "values" and "rows"   
+4. View results.
+
+<strong>What-If Analysis</strong>
+1. Select a cell (or a single relevant table). 
+2. Go to Data → What-If Analysis → Scenario Manager → Add new(name it and select cell).  
+3. Enter the values for this scenario 
+4. Add other scenarios with different values.
+5. Click Show → Click Summary (in an empty cell)
+
+<strong>Goal Seek</strong>
+1. Data → What-If Analysis → Goal Seek.  
+2. Set Set cell = a cell with formula, To value = ex:1000, By changing cell = a cell with value (in same row) .  
+3. Click OK
+
+<strong>Data Validation</strong>
+1. Select cells to restrict.  
+2. Data → Data Validation.  
+3. Choose rule (list/number/etc.), set allowed values, OK.
+
+<strong>Subtotals</strong>
+1. Sort by grouping column (Data → Sort).  
+2. Data → Subtotal.  
+3. At each change in: grouping column; Use function: Sum; Add subtotal to: target column.  
+4. Click OK.
+    </div>
+<h3 style="margin-top:30px;"><strong>IGNORE THIS PART →</h3>
+<h3>
+1) Paste the data into Excel<br>
+2) Select the column<br>
+3) Go to Data → Text to Columns<br>
+4) Choose Delimited<br>
+5) Select Comma<br>
+6) Click Finish<br>
+</h3>
+
+<div class="table-grid">
+
+  <!-- TABLE 1 -->
+  <div class="table-card">
+    <button class="copy-btn" onclick="copyTable('t1')">Copy</button>
+    <div class="table-title">Sports Analytics Dataset</div>
+    <div class="table-text" id="t1">
+Player,Team,Score
+John,Eagles,4
+Aadi,Blasters,2
+Milan,Dragons,1
+Suresh,Warriors,0
+Luca,Kings,5
+Kevin,Tigers,1
+Rohit,Eagles,1
+Joel,Blasters,0
+Arun,Warriors,3
+
+
+    </div>
+  </div>
+
+  <!-- TABLE 2 -->
+  <div class="table-card">
+    <button class="copy-btn" onclick="copyTable('t2')">Copy</button>
+    <div class="table-title">Banking / Loan Dataset</div>
+    <div class="table-text" id="t2">
+Customer,City,Amount,Interest
+Asha,Bangalore,3500000,8.1%
+Ramesh,Delhi,900000,9.5%
+Joseph,Chennai,350000,11.2%
+Manu,Kochi,680000,7.8%
+Devi,Pune,1200000,10.1%
+Tarun,Hyderabad,250000,6.5%
+Shaan,Mumbai,4800000,8.0%
+Kiran,Jaipur,1050000,9.2%
+Nidhi,Lucknow,420000,12%
+
+    </div>
+  </div>
+
+  <!-- TABLE 3 -->
+  <div class="table-card">
+    <button class="copy-btn" onclick="copyTable('t3')">Copy</button>
+    <div class="table-title">Weather / Climate Dataset</div>
+    <div class="table-text" id="t3">
+City,Temperature,Wind Speed,Condition
+Bangalore,29°C,14km/h,Cloudy
+Mumbai,33°C,10km/h,Rain
+Delhi,36°C,20km/h,Sunny
+Chennai,34°C,12km/h,Humid
+Hyderabad,32°C,16km/h,Cloudy
+Kochi,30°C,8km/h,Heavy Rain
+Kolkata,31°C,14km/h,Cloudy
+Jaipur,38°C,22km/h,Hot
+Pune,28°C,11km/h,Mild Rain
+    </div>
+  </div>
+
+  <!-- TABLE 4 -->
+  <div class="table-card">
+    <button class="copy-btn" onclick="copyTable('t4')">Copy</button>
+    <div class="table-title">Cinema / OTT Dataset</div>
+    <div class="table-text" id="t4">
+Title,Platform,Views (M)
+Dark Matter,Netflix,12.5
+The Heist,Prime,9.1
+City Beats,Hotstar,6.4
+Samurai X,Netflix,15.2
+Laugh Club,SonyLiv,3.2
+Ancient Tales,Prime,7.9
+Galactic Run,Netflix,10.6
+Wild Tracks,Discovery+,5.3
+Love Street,Hotstar,8.9
+
+    </div>
+  </div>
+
+</div>
+
+
+  </div>
+</div>
+
+<!-- LAB 9 -->
+<div class="content">
+  <h2>9. Interactive Dashboard</h2>
+
+  <div class="two-col">
+
+    <!-- LEFT RAW CLEANED TEXT -->
+    <div class="col-box">
+      <div class="col-title">Lab 9
+</div>
+
+
+
+Steps to Create Dashboard (Sample Superstore)
+
+1. Data Cleaning  
+a) Apply filters to all columns  
+b) Check for anomalies such as blanks, incorrect data  
+c) Correct anomalies manually
+
+2. For each goal, perform analysis  
+a) Insert Pivot Table in new sheet  
+b) Drag fields on which analysis has to be done respective to tab of pivot table feild
+c) Remove Grand Total: Select pivot table→Checl Design Robbon → Grand Total → Off
+d)Select option ribbon→pivot chart oprion→select chart type→OK
+e)You will get desired chart
+
+3. Create Charts  
+Follow step 2 to create all the charts in a new sheet, name it as excel dashboard.
+
+4. Add Slicers  
+Goto Pivot Chart Tools Ribbon → Analyse option → Insert Slicer → Select column to insert.
+Analyze → Insert Slicer  
+Choose fields for slicers
+
+5. Connect Slicers  
+Slicer Tools → Options → Pivot Table Connections  
+Select all pivot tables to connect
+
+6. Dashboard will be interactive , selected data from slicer will dynamically update to display the options
+    </div>
+
+    <!-- RIGHT SUMMARY -->
+    <div class="col-box">
+      <div class="col-title">Execution</div>
+
+<strong>1. Data Cleaning</strong>
+1. Select the entire dataset (Ctrl + A).  
+2. Go to Data → Filter.  
+3. Open each filter dropdown and check for:  
+   • Blank cells  
+   • Wrong or inconsistent values  
+   • Spelling or category errors  
+4. Fix all issues manually.
+
+<br>
+
+<strong>2. Create Pivot Tables for Each Goal</strong>
+1. Select data → Insert → PivotTable → New Worksheet → OK.  
+2. In PivotTable Fields panel:  
+   • Drag field to Rows (e.g., Category/Region/Segment).  
+   • Drag Sales/Profit/Quantity to Values.  
+3. Turn off Grand Totals:  
+   • Click pivot → Design → Grand Totals → Off.
+
+<br>
+
+<strong>3. Create Charts</strong>
+1. Click inside the pivot table.  
+2. Insert → PivotChart.  
+3. Choose chart type based on the goal:  
+   • Doughnut → Segment-wise profit  
+   • Pie → Category quantity  
+   • Bar/Column → Region-wise sales & profit  
+4. Click OK.  
+5. Format the chart (title/colors).  
+6. Copy chart → Paste into a new sheet named “Excel Dashboard”.
+
+<br>
+
+<strong>4. Add Slicers</strong>
+1. Select any pivot table or chart.  
+2. PivotTable Analyze → Insert Slicer.  
+3. Choose slicer fields (Region / Category / Segment).
+
+<br>
+
+<strong>5. Connect All Slicers</strong>
+1. Click a slicer.  
+2. Slicer Tools → Options.  
+3. PivotTable Connections.  
+4. Check all pivot tables that should respond to the slicer.  
+5. Repeat for each slicer.
+    </div>
+<h3 style="margin-top:30px;"><STRONG>IGNORE THIS PART →</STRONG></h3>
+<h3>
+1) Paste the data into Excel<br>
+2) Select the column<br>
+3) Go to Data → Text to Columns<br>
+4) Choose Delimited<br>
+5) Select Comma<br>
+6) Click Finish
+</h3>
+
+
+<div class="table-grid">
+
+  <!-- TABLE 5 -->
+  <div class="table-card">
+    <button class="copy-btn" onclick="copyTable('t5')">Copy</button>
+    <div class="table-title">Airline Flight Operations</div>
+    <div class="table-text" id="t5">
+Flight No,Airline,Passengers,Status
+AI203,Air India,168,On-Time
+6E521,Indigo,182,Delayed
+UK811,Vistara,160,On-Time
+SG407,SpiceJet,150,On-Time
+I5579,AirAsia,172,Delayed
+AI421,Air India,154,On-Time
+6E678,Indigo,184,Delayed
+SG216,SpiceJet,132,On-Time
+I5513,AirAsia,160,Delayed
+
+    </div>
+  </div>
+
+
+
+  <!-- TABLE 7 -->
+  <div class="table-card">
+    <button class="copy-btn" onclick="copyTable('t7')">Copy</button>
+    <div class="table-title">Hotel Reservations</div>
+    <div class="table-text" id="t7">
+Guest,Room Type,Check-in,Nights,City,Amount
+Suresh,Deluxe,2025-01-12,2,Bangalore,6200
+Alisha,Suite,2025-01-10,4,Mumbai,18500
+Vivek,Standard,2025-01-14,1,Kochi,2100
+Nisha,Deluxe,2025-01-11,3,Chennai,8900
+Raj,Premium,2025-01-09,2,Mumbai,11200
+Farhan,Standard,2025-01-15,1,Delhi,2300
+Priya,Suite,2025-01-08,5,Hyderabad,21500
+Manoj,Deluxe,2025-01-13,2,Pune,6700
+Ankit,Premium,2025-01-10,2,Jaipur,9800
+
+    </div>
+  </div>
+
+  <!-- TABLE 8 -->
+  <div class="table-card">
+    <button class="copy-btn" onclick="copyTable('t8')">Copy</button>
+    <div class="table-title">Social Media Engagement</div>
+    <div class="table-text" id="t8">
+Post ID,Platform,Likes,Comments,Shares,Reach
+1001,Instagram,520,45,30,9200
+1870,YouTube,3100,410,220,18000
+1211,Twitter,480,62,40,7400
+1330,LinkedIn,260,18,12,4300
+1458,Facebook,780,96,75,11300
+1688,Instagram,920,120,64,14200
+1899,YouTube,5600,620,310,25000
+1744,LinkedIn,140,9,5,2800
+1921,Facebook,350,44,28,6900
+
+    </div>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+<!-- LAB 10 -->
+<div class="content">
+  <h2>10 – Python Program</h2>
+
+  <div class="two-col">
+
+    <!-- LEFT ORIGINAL -->
+    <div class="col-box">
+      <div class="col-title">. . .</div>
+      . . .work in progress
+    </div>
+
+    <!-- RIGHT CLEAN PYTHON -->
+   <div class="col-box">
+  <div class="col-title">Code</div>
+
+  <b>Python A</b>
+  <div class="code-box" id="codeA">
+<pre>
+import random
+
+a = int(input("enter no of trails: "))
+b = int(input("each input how many rolls: "))
+c = int(input("enter rollup value: "))
+d = 0
+
+for i in range(a):
+    for j in range(b):
+        result = random.randint(1, 6)
+        print(result)
+        if result == c:
+            d += 1
+    print("---")
+
+total = a + b
+print(f'number of times {c} appeared: {d}')
+print("probability =", d/total)
+</pre>
+    <button onclick="copyCode('codeA')">Copy</button>
+  </div>
+
+  <b>Python B</b>
+  <div class="code-box" id="codeB">
+<pre>
+from scipy.stats import binom
+
+n = 10
+p = 0.5
+k = 2
+
+prob = binom.pmf(k, n, p)
+print(f'probability of 2 successes: {prob}')
+</pre>
+    <button onclick="copyCode('codeB')">Copy</button>
+  </div>
+
+</div>
+
+<script>
+function showTab(n){
+  document.querySelectorAll('.tab').forEach((t,i)=> {
+    t.classList.toggle('active', i===n);
+  });
+  document.querySelectorAll('.content').forEach((c,i)=> {
+    c.classList.toggle('active', i===n);
+  });
+}
+
+function copyCode(id) {
+  const code = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(code);
+}
+</script>
+
+
+</body>
+</html>
